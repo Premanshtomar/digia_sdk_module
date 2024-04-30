@@ -1,13 +1,17 @@
 import 'package:digia_sdk_module/home.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main(List<String> args) {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(MyApp(
+    projectId: args[0],
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String projectId;
+
+  const MyApp({super.key, required this.projectId});
 
   // This widget is the root of your application.
   @override
@@ -15,9 +19,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       routes: {
-        '/home': (context) => const HomePage(),
+        '/home': (context) => HomePage(
+              projectId: projectId,
+            ),
       },
-      home: const HomePage(),
+      home: HomePage(
+        projectId: projectId,
+      ),
     );
   }
 }
