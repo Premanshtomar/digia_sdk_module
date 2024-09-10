@@ -11,6 +11,11 @@ class HomePage extends StatelessWidget {
     return DUIApp(
       baseUrl: baseUrl,
       digiaAccessKey: projectId,
+      environmentInfo: Staging(),
+      networkConfiguration: NetworkConfiguration(
+        defaultHeaders: {},
+        timeout: 30,
+      ),
     );
   }
 }
